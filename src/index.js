@@ -1,8 +1,10 @@
 function showCityTimezone(event) {
-  let citiesSelect = document.querySelector("#city");
-  citiesSelect.addEventListener("change", showCityTimezone);
   if (event.target.value.length > 0) {
-    alert(event.target.value);
+    let currentTime = moment()
+      .tz(event.target.value)
+      .format("dddd, MMMM D, YYYY H:mm");
+    alert(`It is ${currentTime} in ${event.target.value}`);
   }
 }
-showCityTimezone();
+let citiesSelect = document.querySelector("#city");
+citiesSelect.addEventListener("change", showCityTimezone);
